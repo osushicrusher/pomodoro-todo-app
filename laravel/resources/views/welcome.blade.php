@@ -6,7 +6,7 @@
 
         <title>Laravel</title>
 
-        <link href="{{asset('/assets/css/app.css')}}" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body class="flex justify-center items-center h-56">
       <h1 class="text-3xl text-green-500 text-green-600">Hello Tailwind</h1>
