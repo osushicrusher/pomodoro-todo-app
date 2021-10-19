@@ -3,12 +3,18 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import pageAdmin from "./components/pages/admin.vue";
-import pageAdminSth from "./components/pages/adminSth.vue";
+import Home from "./components/pages/Home.vue";
+import pageAdmin from "./components/pages/Admin.vue";
+import pageAdminSth from "./components/pages/AdminSth.vue";
 
 const router = new VueRouter({
     mode: "history",
     routes: [
+        {
+          path: "/",
+          name: "Home",
+          component: Home
+        },
         {
             path: "/admin/",
             name: "pageAdmin",

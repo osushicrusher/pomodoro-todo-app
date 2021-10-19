@@ -13,7 +13,7 @@ class StoreCategory extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,6 +32,6 @@ class StoreCategory extends FormRequest
     {
         return $this->only([
           'name'
-        ])
+        ]);
     }
 }

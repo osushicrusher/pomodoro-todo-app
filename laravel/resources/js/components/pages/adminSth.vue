@@ -5,12 +5,18 @@
     <ul>
       <li v-for="data in adminList" :key="data.id">
         {{ data.id }}/{{ data.name }}
-        <!-- <router-link :to="{name: 'edit', params: { id: category.id }}">編集</router-link> -->
         <button @click="deleteCategory(data.id)">削除</button>
       </li>
     </ul>
 
     <p v-if="message">{{ message }}</p>
+    <form action="api/admin/categories" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="name">カテゴリー名</label>
+            <input type="text" id="name" name="name" />
+        </div>
+        <button type="submit">登録する</button>
+    </form>
   </div>
 </template>
 
@@ -40,11 +46,11 @@ export default {
     gatCategory() {
       this.path = this.$route.path
       console.log(this.path)
-      console.log(this.trimedPath)
       axios
         .get(`/api/admin/${this.trimedPath}`)
         .then(response => {
           this.adminList = response.data;
+                console.log(this.adminList)
         })
         .catch(error => {
           this.message = error;
