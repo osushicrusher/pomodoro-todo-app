@@ -18,6 +18,7 @@ class CategoriesController extends Controller
       return Category::all();
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
