@@ -8,14 +8,12 @@
         <button @click="deleteCategory(data.id)">削除</button>
       </li>
     </ul>
-
-    <p v-if="message">{{ message }}</p>
-    <form action="api/admin/categories" method="POST" enctype="multipart/form-data">
+    <form action="/api/admin/categories" method="POST" enctype="multipart/form-data">
         <div>
             <label for="name">カテゴリー名</label>
             <input type="text" id="name" name="name" />
         </div>
-        <button type="submit">登録する</button>
+        <button type="submit" @click="storeCategory()">登録する</button>
     </form>
   </div>
 </template>
@@ -24,17 +22,16 @@
 export default {
   data() {
     return {
-      message: "",
       adminList: {},
       path: '',
     };
   },
   created: function() {
-    this.gatCategory();
+    this.getCategory();
   },
   computed: {
     /**
-     * 例示のための関数です
+     * パスの整形をする関数
      * @param  {String} URLの /admin/^^/ の部分
      * @return {String} ^^の部分
      */
@@ -43,14 +40,23 @@ export default {
     }
   },
   methods: {
-    gatCategory() {
+    getCategory() {
       this.path = this.$route.path
-      console.log(this.path)
       axios
         .get(`/api/admin/${this.trimedPath}`)
         .then(response => {
           this.adminList = response.data;
-                console.log(this.adminList)
+        })
+        .catch(error => {
+          this.message = error;
+        });
+    },
+    storeCategory() {
+      this.path = this.$route.path
+      axios
+        .post(`/api/admin/${this.trimedPath}`)
+        .then(response => {
+          this.adminList = response.data;
         })
         .catch(error => {
           this.message = error;
@@ -58,7 +64,7 @@ export default {
     },
     deleteCategory(id) {
       axios
-        .delete("/admin/categories" + id)
+        .delete(`/api/admin/${this.trimedPath}/${id}`)
         .then(response => {
           this.gatCategory();
           this.message = "";
