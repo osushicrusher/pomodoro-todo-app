@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+import router from './router';
+import store from './store/index';
 
 window.Vue = require('vue');
 
@@ -15,8 +17,7 @@ window.Vue = require('vue');
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-import Vue from "vue";
-import router from "./router";
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -26,7 +27,15 @@ import router from "./router";
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('app', require('./components/App.vue'));
+import GlobalHeader from './components/globals/GlobalHeader.vue'
+import GlobalFooter from './components/globals/GlobalFooter.vue'
+
 const app = new Vue({
-    el: '#app',
-    router: router
-});
+    store,
+    router,
+    components: {
+      GlobalHeader,
+      GlobalFooter
+    }
+}).$mount('#app');
