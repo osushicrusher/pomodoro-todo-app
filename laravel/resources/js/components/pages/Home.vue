@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden bg-gray-900">
+  <div class="overflow-hidden bg-white">
     <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="flex flex-col items-center justify-between xl:flex-row">
         <div class="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
@@ -29,7 +29,7 @@
             </svg>
             <div class="relative bg-white rounded shadow-2xl p-7 sm:p-10">
               <h3 class="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                Sign up for updates
+                Sign up
               </h3>
               <form>
                 <div class="mb-1 sm:mb-2">
@@ -59,19 +59,15 @@
                     type="submit"
                     class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   >
-                    Subscribe
+                    Sign up
                   </button>
                 </div>
-                <p class="text-xs text-gray-600 sm:text-sm">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="grid row-gap-8 sm:row-gap-0 sm:grid-cols-2 lg:grid-cols-3">
       <div class="p-8 border-b sm:border-r">
@@ -154,7 +150,8 @@
       </div>
     </div>
   </div>
-            <div class="relative mt-16 bg-deep-purple-accent-400">
+    <Info />
+  <div class="relative mt-16 bg-deep-purple-accent-400">
     <svg class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400" preserveAspectRatio="none" viewBox="0 0 1440 54">
       <path fill="currentColor" d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"></path>
     </svg>
@@ -298,3 +295,25 @@
 
   </div>
 </template>
+
+<script>
+
+import Info from '../parts/Info.vue'
+
+export default {
+  data() {
+    return {
+
+    };
+  },
+  components: {
+    Info
+  },
+  created: function() {
+
+  },
+  methods: {
+
+  }
+};
+</script>
