@@ -4,8 +4,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Home from "./components/pages/Home.vue";
+import pageUser from "./components/pages/User.vue";
 import pageAdmin from "./components/pages/Admin.vue";
-import pageAdminSth from "./components/pages/AdminSth.vue";
+import pageAdminUsers from "./components/pages/AdminUsers.vue";
+import pageAdminCategories from "./components/pages/AdminCategories.vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -16,14 +18,24 @@ const router = new VueRouter({
           component: Home
         },
         {
+          path: "/users/:id",
+          name: "pageUser",
+          component: pageUser
+        },
+        {
             path: "/admin/",
             name: "pageAdmin",
             component: pageAdmin
         },
         {
+          path: "/admin/users",
+          name: "pageAdminUsers",
+          component: pageAdminUsers
+        },
+        {
           path: "/admin/categories",
           name: "pageAdminCategories",
-          component: pageAdminSth
+          component: pageAdminCategories
         },
     ]
 });
