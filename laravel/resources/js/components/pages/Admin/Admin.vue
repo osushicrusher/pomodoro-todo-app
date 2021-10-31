@@ -12,7 +12,7 @@
     max-w-7xl
   ">
     <a class="grid w-full grid-cols-1 gap-12 mx-auto lg:grid-cols-2">
-      <a href="/admin/categories" class="p-6 border-solid border-4 border-gray-600 rounded">
+      <a href="/admin/users" class="p-6 border-solid border-4 border-gray-600 rounded">
         <div class="
       inline-flex
       items-center
@@ -48,7 +48,7 @@
     ">USER</h1>
         <p class="mx-auto text-base leading-relaxed text-gray-300">ユーザーの追加・編集・削除をすることができます。</p>
       </a>
-      <div class="p-6 border-solid border-4 border-gray-600">
+      <a href="/admin/categories" class="p-6 border-solid border-4 border-gray-600">
         <div class="
       inline-flex
       items-center
@@ -83,7 +83,7 @@
       lg:text-3xl
     ">Category</h1>
         <p class="mx-auto text-base leading-relaxed text-gray-300">カテゴリーの追加・編集・削除をすることができます。</p>
-      </div>
+      </a>
     </a>
         <div class="grid w-full grid-cols-1 gap-12 mx-auto lg:grid-cols-2">
       <div class="p-6">
