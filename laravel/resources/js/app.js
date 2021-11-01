@@ -28,14 +28,16 @@ window.Vue = require('vue');
  */
 
 Vue.component('app', require('./components/App.vue'));
-import GlobalHeader from './components/globals/GlobalHeader.vue'
-import GlobalFooter from './components/globals/GlobalFooter.vue'
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
+Vue.component('v-icon', Icon)
+
+import Dashboard from "./components/pages/Dashboard"
 
 const app = new Vue({
     store,
     router,
     components: {
-      GlobalHeader,
-      GlobalFooter
+      Dashboard
     }
 }).$mount('#app');
