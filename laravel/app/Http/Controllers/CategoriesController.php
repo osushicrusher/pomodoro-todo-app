@@ -26,7 +26,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create($request->all());
+      Category::create($request->all());
+      return back();
     }
 
     /**
@@ -60,6 +61,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+        return back();
     }
 }
