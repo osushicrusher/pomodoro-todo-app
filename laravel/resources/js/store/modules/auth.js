@@ -1,26 +1,29 @@
 import router from '../../router';
 
 const state = {
-    token: ''
-};
-
-const mutations = {
-    login (state, payload) {
-        state.token = payload;
-    },
-    logout (state) {
-        state.token = null;
-    }
+    token: '',
+    userId: ''
 };
 
 const getters = {
-    isLogin (state) {
-        return state.token ? true : false;
+  token: state => state.token,
+  userId: state => state.userId,
+  isLogin: state => state.token ? true : false,
+};
+
+const mutations = {
+    login(state, payload) {
+        state.token = payload.token;
+        state.userId = payload.userId;
+    },
+    logout(state) {
+        state.token = null;
+        state.userId = null;
     }
 };
 
 const actions = {
-    login ({ commit }, payload) {
+    login({ commit }, payload) {
         axios.post('/api/login', {
             email: payload.email,
             password: payload.password
@@ -35,7 +38,7 @@ const actions = {
             commit('alert/setAlert', { 'message': 'ログインに失敗しました。', 'type': 'danger' }, { root: true });
         });
     },
-    logout ({ commit }) {
+    logout({ commit }) {
         axios.post('/api/logout').then(res => {
             axios.defaults.headers.common['Authorization'] = '';
             commit('logout');
