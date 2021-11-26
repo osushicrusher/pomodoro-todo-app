@@ -1,7 +1,7 @@
 const state = {
     userObj: {},
     users: [],
-    pageNums: [1, 2, 3, 4],
+    pageNums: [],
 };
 
 const getters = {
@@ -19,8 +19,9 @@ const getters = {
  
 const mutations = {
   SET_USER(state, payload) {
-    state.userObj = payload.data;
-    state.users = payload.data.data;
+    state.userObj = payload.data
+    state.users = payload.data.data
+    state.pageNums = [...Array(payload.data.last_page)].map((_, i) => i + 1)
   }
 };
 

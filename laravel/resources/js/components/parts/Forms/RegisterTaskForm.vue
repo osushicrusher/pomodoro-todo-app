@@ -47,5 +47,28 @@
     <div>description</div>
     <div>liked</div>
     <div>due_date</div>
+    <range-calendar />
   </form>
 </template>
+
+<script>
+
+import RangeCalendar from "../Calendar/RangeCalendar"
+
+export default {
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    RangeCalendar
+  },
+  created: function() {
+
+  },
+  methods: {
+
+  }
+};
+</script>

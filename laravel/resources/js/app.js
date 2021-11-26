@@ -8,6 +8,7 @@ require('./bootstrap');
 import router from './router';
 import store from './store/index';
 
+
 window.Vue = require('vue');
 
 /**
@@ -31,8 +32,10 @@ Vue.component('app', require('./components/App.vue'));
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('v-icon', Icon)
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar);
 
-import Dashboard from "./components/pages/Dashboard"
+import Dashboard from "./components/globals/Dashboard"
 
 const app = new Vue({
     store,

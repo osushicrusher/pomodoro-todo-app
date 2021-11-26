@@ -44,9 +44,50 @@
           </svg>
           <h2 class="title-font font-medium text-3xl text-gray-900">46</h2>
           <p class="leading-relaxed">Places</p>
+          {{ userData }}
         </div>
+        <button @click="showData()">押してね</button>
+        <button @click="showGetters()">押してね</button>
       </div>
     </div>
   </div>
 </div>
 </template>
+
+<script>
+
+import { mapGetters } from 'vuex'
+
+export default {
+  data() {
+    return {
+      userData: {},
+    };
+  },
+  created() {
+    this.getUserData()
+  },
+  mounted(){
+    console.log(this.$store.getters)
+  },
+  computed: {
+    ...mapGetters({token: 'auth/token', userId: 'auth/userId', isLogin: 'auth/isLogin'})
+  },
+  methods: {
+    async getUserData() {
+      const url = `/api/users/${this.$route.params['id']}`
+      const res = await axios.get(url)
+      this.userData = res.data
+    },
+    showData() {
+      console.log(this.userData)
+    },
+    showGetters() {
+      console.log(this.token)
+      console.log(this.userId)
+      console.log(this.isLogin)
+    }
+
+  }
+};
+</script>

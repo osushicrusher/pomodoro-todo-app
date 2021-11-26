@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+// use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,9 @@ use Illuminate\Http\Request;
 // });
 
 
-Route::apiResource('/admin/categories', 'CategoriesController');
-// Route::apiResource('/admin/users', 'UsersController');
+
+// Route::apiResource('/login', 'LoginController');
+Route::apiResource('/categories', 'CategoriesController');
+Route::apiResource('/users', 'UsersController');
+Route::apiResource('/mail', 'MailController')->only(['store']);
+Route::apiResource('/download', 'DownloadController')->only(['index', 'store']);

@@ -1,5 +1,5 @@
 <template>
-  <form :action="action" method="post" class="w-full max-w-lg p-3 bg-gray-50 absolute top-1/2 left-2/4">
+  <form :action="action" method="post" enctype="multipart/form-data" class="w-full max-w-lg p-3 bg-gray-50 absolute top-1/2 left-2/4">
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label for="name" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -54,6 +54,12 @@
         <p class="err-msg">{{ err_msgs['password_verified']}}</p>
       </div>
     </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <input @change="fileSelected" type="file" id="file" name="file" class="form-control">
+        <button type="submit">アップロード</button>
+      </div>
+    </div>
     <PrimaryButton @click.prevent="validateUserInfo()" buttonText="登録する"/>
   </form>
 </template>
@@ -84,7 +90,8 @@ export default {
         email: '',
         password: '',
         password_verified: ''
-      }
+      },
+      fileInfo: ''
     };
   },
   components: {
@@ -111,6 +118,9 @@ export default {
       if(check === false) {
         return false;
       }
+    },
+    fileSelected(e) {
+      this.fileInfo = e.target.files[0]
     }
   }
 };

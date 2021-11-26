@@ -1,5 +1,6 @@
 <template>
   <div class="leading-normal tracking-normal" id="main-body">
+    <progress-bar />
     <div class="flex flex-wrap">
 
       <Sidebar />
@@ -8,7 +9,7 @@
 
         <Navbar />
 
-        <div class="p-6 bg-gray-100 mb-20">
+        <div class="p-6 bg-gray-100 mb-20 min-h-screen">
           <router-view />
         </div>
 
@@ -20,9 +21,10 @@
 </template>
 
 <script>
+import ProgressBar from '../parts/ProgressBar'
 import Sidebar from '../globals/SideBar'
 import Navbar from '../globals/NavBar'
-import Footer from '../globals/GlobalFooter.vue'
+import Footer from './GlobalFooter.vue'
 export default {
   name: 'Dashboard',
   data() {
@@ -34,6 +36,7 @@ export default {
 
   },
   components: {
+    ProgressBar,
     Sidebar,
     Navbar,
     Footer

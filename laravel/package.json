@@ -10,6 +10,8 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^4.0.3",
+        "autoprefixer": "^10.4.0",
         "axios": "^0.23.0",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
@@ -18,16 +20,21 @@
         "laravel-mix-purgecss": "^6.0.0",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
+        "postcss": "^8.3.11",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+        "tailwindcss": "^2.2.19",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "autoprefixer": "^10.3.7",
-        "postcss": "^8.3.11",
-        "tailwindcss": "^2.2.17",
+        "chart.js": "^3.6.0",
+        "v-calendar": "^2.3.4",
+        "vue-awesome": "^4.3.1",
+        "vue-chartjs": "^3.5.1",
+        "vue-progress-indicator": "0.0.4",
+        "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.2",
         "vuex": "^3.6.2"
     }
