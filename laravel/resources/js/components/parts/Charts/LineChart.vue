@@ -7,11 +7,13 @@
 <script>
 export default {
   name: 'lineChart',
+  props: {
+    monthObj: Object,
+  },
   data() {
     return {
-      labels : ['2019年1月', '2019年2月', '2019年3月', '2019年4月'],
-      data: [120, 190, 34, 58]
-    };
+
+    }
   },
   created: function() {
 
@@ -25,10 +27,10 @@ export default {
       const lineChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: this.labels,
+          labels: this.monthObj.lebels,
           datasets: [{
             label: '四半期の売上数の遷移',
-            data: this.data
+            data: this.monthObj.datasets
           }]
         }
       })
