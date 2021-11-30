@@ -25,3 +25,4 @@ Route::apiResource('/categories', 'CategoriesController');
 Route::apiResource('/users', 'UsersController');
 Route::apiResource('/mail', 'MailController')->only(['store']);
 Route::apiResource('/download', 'DownloadController')->only(['index', 'store']);
+Route::apiResource('/tasks', 'TasksController');

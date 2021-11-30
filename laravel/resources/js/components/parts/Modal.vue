@@ -16,13 +16,13 @@ import RegisterUserForm from "../parts/Forms/RegisterUserForm"
 export default {
   data() {
     return {
-      // isModalOpen: this.isModalOpen,
-    };
+
+    }
   },
   components: {
     RegisterUserForm
   },
-  created: function() {
+  created() {
 
   },
   methods: {
@@ -30,9 +30,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.d-none {
-  display: none;
-}
-</style>
