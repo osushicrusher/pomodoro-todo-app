@@ -32,8 +32,15 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-      dd($request);
-      Task::create($request->all());
+      $data = $request->all();
+      $task = Task::create($request->all());
+      $task = $task->toArray();
+      $subGoalData =
+      [
+        'sub_goal_id' => $data['sub_goal_id'],
+        'task_id' => $task['id']
+      ];
+      SubGoalsTasks::create($subGoalData);
       return back();
     }
 
@@ -55,7 +62,9 @@ class TasksController extends Controller
       }
       //メインゴールの取得
       $main_goals = MainGoals::whereIn('id', $main_goal_ids)->get()->toArray();
-      $res['main_goals'] = $main_goals;
+      foreach ($main_goals as $main_goal) {
+        $res['main_goals'][$main_goal['id']] = $main_goal;
+      }
 
       $sub_goals = MainGoalsSubGoals::where('main_goal_id', $id)->get()->toArray();
       $sub_goal_ids = [];
@@ -65,7 +74,9 @@ class TasksController extends Controller
 
       //サブゴールの取得
       $sub_goals = SubGoals::whereIn('id', $sub_goal_ids)->get()->toArray();
-      $res['sub_goals'] = $sub_goals;
+      foreach ($sub_goals as $sub_goal) {
+        $res['sub_goals'][$sub_goal['id']] = $sub_goal;
+      }
 
       $tasks = SubGoalsTasks::whereIn('sub_goal_id', $sub_goal_ids)->get()->toArray();
       $task_ids = [];
@@ -73,8 +84,10 @@ class TasksController extends Controller
         array_push($task_ids, $task["task_id"]);
       }
       $tasks = Task::whereIn('id', $task_ids)->get()->toArray();
+      foreach ($tasks as $task) {
+        $res['tasks'][$task['id']] = $task;
+      }
 
-      $res['tasks'] = $tasks;
       return $res;
     }
 

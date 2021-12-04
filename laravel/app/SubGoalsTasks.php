@@ -12,4 +12,8 @@ class SubGoalsTasks extends Model
      * @var string
      */
     protected $table = 'sub_goals_tasks';
+
+    protected $guarded = [
+      'created_at', 'updated_at'
+    ];
 }

@@ -1,17 +1,19 @@
 <template>
-  <form class="w-full max-w-lg bg-gray-50">
+  <form action="/api/tasks" method="POST" class="w-full max-w-lg bg-gray-50">
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
           タスク名
         </label>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+        <input name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
         <p class="text-red-500 text-xs italic">Please fill out this field.</p>
       </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full px-3">
+      <div class="px-3">
         ♡
+        <input type="hidden" name="liked" value="true"/>
+      </div>
+      <div class="px-3">
+        <input type="checkbox" name="isSetting" value="true"/>
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-2">
@@ -22,39 +24,27 @@
         <textarea id="description" name="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text"></textarea>
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label for="grid-state" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-          設定する
-        </label>
-        <div class="relative">
-          <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-            <option>New Mexico</option>
-            <option>Missouri</option>
-            <option>Texas</option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
           カラー
         </label>
-        <div></div>
-        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
+        <compact-picker name="color" :value="colors" v-model="colors"/>
+        <input type="hidden" name="color" :value="colors.hex" />
+        <input type="hidden" name="sub_goal_id" :value="selectedSGId"/>
       </div>
     </div>
-    <div>
-      <compact-picker :value="colors" v-model="colors"/>
-    </div>
+    <primary-button buttonText="登録する" />
   </form>
 </template>
 
 <script>
 
+import PrimaryButton from '../Buttons/Base/PrimaryButton'
 import {Compact} from 'vue-color'
 
 export default {
+  props: {
+    selectedSGId: Number,
+  },
   data() {
     return {
       colors: {
@@ -67,6 +57,7 @@ export default {
     }
   },
   components: {
+    PrimaryButton,
     'compact-picker': Compact
   },
   created: function() {
