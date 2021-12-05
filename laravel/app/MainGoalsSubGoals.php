@@ -12,4 +12,8 @@ class MainGoalsSubGoals extends Model
      * @var string
      */
     protected $table = 'main_goals_sub_goals';
+
+    protected $guarded = [
+      'created_at', 'updated_at'
+    ];
 }
