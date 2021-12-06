@@ -11,7 +11,7 @@
       <!-- <Calendar /> -->
 
       <ul id="subGoals" class="grid grid-cols-3 gap-4 h-screen" v-show="subGoalsExist">
-        <li @click="toggleModal(goal.id)" v-for="goal in subGoals" :key="goal.id" class="bg-green-100 flex justify-center items-center">{{ goal.id ? goal.name : '+' }}</li>
+        <li @click="toggleModal(goal.id)" v-for="goal in subGoals" :key="goal.id" :style="{'background-color': goal.color}" class="bg-green-100 flex justify-center items-center">{{ goal.id ? goal.name : '+' }}</li>
         <li @click="toggleModal()" v-if="Object.keys(subGoals).length < 1"  class="flex justify-center items-center border-dashed border-4 border-light-blue-500">+</li>
         <li @click="toggleModal()" v-if="Object.keys(subGoals).length < 2"  class="flex justify-center items-center border-dashed border-4 border-light-blue-500">+</li>
         <li @click="toggleModal()" v-if="Object.keys(subGoals).length < 3"  class="flex justify-center items-center border-dashed border-4 border-light-blue-500">+</li>
